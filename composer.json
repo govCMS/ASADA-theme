@@ -1,0 +1,27 @@
+{
+    "require": {
+        "phing/phing": "dev-master"
+    },
+    "require-dev": {
+        "previousnext/puppet-dev": "4.5.6",
+        "previousnext/govcms-scaffold": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:previousnext/govcms-scaffold.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "git@github.com:previousnext/puppet-dev.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "git@github.com:previousnext/phing.git"
+        }
+    ]
+}

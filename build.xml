@@ -1,0 +1,50 @@
+<!--
+  name: build.xml
+  description: The main project build file for phing operations.
+-->
+
+<project name="asada" default="build" phingVersion="2.4.11">
+
+    <!--
+      This is currently a custom task that we trying to contribute back
+      to the Phing project. If we checkout more build files they will
+      get picked up automatically.
+      https://github.com/phingofficial/phing/pull/326
+    -->
+    <import optional="true">
+      <fileset dir="vendor/previousnext">
+        <patternset>
+          <include name="**/build*.xml"/>
+          <include name="**/build.standard.xml"/>
+        </patternset>
+      </fileset>
+    </import>
+
+    <!--            -->
+    <!-- Properties -->
+    <!-- ===========-->
+
+    <property name="fileproxy.url" value="http://${phing.project.name}.staging.previousnext.com.au" />
+
+    <!--                -->
+    <!-- Custom targets -->
+    <!-- ============== -->
+
+    <target name="build"
+            description="Build the project based on the GovCMS project.">
+      <!-- We want all the tasks from the parent build. -->
+      <phingcall target="standard.build" />
+      <!-- We are implementing on a per project basis. Not all GovCMS projects will have
+           a styleguide, but they should. -->
+      <symlink target="../../styleguide" link="${app.symlink}/styleguide" />
+    </target>
+
+  <target name="db-sync">
+    <phingcall target="database:sync" />
+  </target>
+
+  <target name="uli">
+    <phingcall target="login" />
+  </target>
+
+</project>

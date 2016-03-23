@@ -203,3 +203,17 @@
     }
   }
 }
+
+.navigation__drop-down, .region-navigation .block__content > .menu > li > ul {
+  width: auto!important;
+}
+
+.region-navigation .block__content > .menu > li > ul > li > ul {
+  position: absolute!important;
+  left: 100%!important;
+  top:0!important;
+  width: auto!important;
+  white-space: nowrap!important;
+}
+
+
